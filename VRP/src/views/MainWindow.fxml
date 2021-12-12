@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="557.0" prefWidth="799.0" stylesheets="@../stylesheet/StandarStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainWindowController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#openFile" styleClass="icon-open" text="Open File" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" onAction="#close" styleClass="icon-close" text="Close" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="View">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#adjustGraph" styleClass="icon-adjust" text="Adjust Graph" />
+               </items></Menu>
+            <Menu mnemonicParsing="false" text="Operations">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#run" styleClass="icon-run" text="Run" />
+                  <MenuItem mnemonicParsing="false" onAction="#kill" styleClass="icon-stop" text="Stop" />
+               </items></Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#about" styleClass="icon-info" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <bottom>
+      <HBox fx:id="statusPane" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Time : ">
+               <font>
+                  <Font name="Arial Bold" size="11.0" />
+               </font></Label>
+            <Label fx:id="runTime" alignment="CENTER" prefHeight="14.0" prefWidth="100.0" text="- - -">
+               <font>
+                  <Font name="Arial Bold Italic" size="10.0" />
+               </font></Label>
+            <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="25.0" />
+            <Label fx:id="sb_info" text="info">
+               <font>
+                  <Font name="Arial Bold" size="11.0" />
+               </font></Label>
+            <Label fx:id="sb_generation" text="0">
+               <font>
+                  <Font name="Arial Bold" size="11.0" />
+               </font></Label>
+            <Separator halignment="RIGHT" maxWidth="1.7976931348623157E308" orientation="VERTICAL" HBox.hgrow="ALWAYS" />
+            <Label fx:id="status" alignment="CENTER" prefHeight="16.0" prefWidth="180.0" text="No file selected" textFill="#434343">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="5.0" />
+         </padding></HBox>
+   </bottom>
+   <left>
+      <VBox fx:id="carteLeft" alignment="TOP_CENTER" prefHeight="458.0" prefWidth="165.0" spacing="1.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="32.0" prefWidth="154.0">
+               <VBox.margin>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </VBox.margin>
+               <children>
+                  <Label alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="26.0" prefWidth="140.0" text="File informations">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="info-black" />
+                  <String fx:value="info-pane" />
+               </styleClass>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="22.0" prefWidth="9999.0" text="File Name :">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="file_name" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="22.0" prefWidth="9999.0" text="- - -">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                     <font>
+                        <Font name="Arial Bold Italic" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="3.0" right="3.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="info-blueberry" />
+                  <String fx:value="info-pane" />
+               </styleClass>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="22.0" prefWidth="9999.0" text="Vehicle number :">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="vehicle_number" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="22.0" prefWidth="9999.0" text="- - -">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                     <font>
+                        <Font name="Arial Bold Italic" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="3.0" right="3.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="info-orange" />
+                  <String fx:value="info-pane" />
+               </styleClass>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="22.0" prefWidth="9999.0" text="Vehicle Capacity :">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="vehicle_capacity" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="22.0" prefWidth="9999.0" text="- - -">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                     <font>
+                        <Font name="Arial Bold Italic" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="3.0" right="3.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="info-lime" />
+                  <String fx:value="info-pane" />
+               </styleClass>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="22.0" prefWidth="9999.0" text="Customers number :">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="customers_number" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="22.0" prefWidth="9999.0" text="- - -">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                     <font>
+                        <Font name="Arial Bold Italic" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="3.0" right="3.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="info-strawberry" />
+                  <String fx:value="info-pane" />
+               </styleClass>
+            </VBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Separator>
+            <VBox>
+               <children>
+                  <Label alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="26.0" prefWidth="146.0" text="Results">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="info-black" />
+                  <String fx:value="info-pane" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </VBox.margin>
+            </VBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Label prefHeight="16.0" prefWidth="80.0" text="Distance">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="distance" alignment="CENTER" prefHeight="16.0" prefWidth="89.0" text="- - -">
+                           <font>
+                              <Font name="Arial Italic" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="info-grape" />
+                        <String fx:value="info-pane" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Label prefHeight="16.0" prefWidth="80.0" text="Vehicles">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="vehicles" alignment="CENTER" prefHeight="16.0" prefWidth="89.0" text="- - -">
+                           <font>
+                              <Font name="Arial Italic" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="info-banana" />
+                        <String fx:value="info-pane" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefHeight="1.0E10" prefWidth="200.0" valignment="BOTTOM" VBox.vgrow="ALWAYS" />
+            <GridPane alignment="CENTER" hgap="8.0" vgap="8.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#openFile" prefHeight="32.0" prefWidth="128.0" styleClass="b_add" text="Open instance" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#run" prefHeight="40.0" prefWidth="60.0" styleClass="b_edit" text="Run" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#kill" prefHeight="40.0" prefWidth="60.0" styleClass="b_remove" text="Stop" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                  <Button layoutX="22.0" layoutY="66.0" mnemonicParsing="false" onAction="#custom_run" prefHeight="40.0" prefWidth="60.0" style="-fx-padding: 1;" styleClass="b_refresh" text="Custom run" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="12.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" onAction="#show_result" prefHeight="40.0" prefWidth="60.0" style="-fx-padding: 1;" styleClass="b_cancel" text="Result" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="2.0" right="2.0" top="3.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin></VBox>
+   </left>
+</BorderPane>
